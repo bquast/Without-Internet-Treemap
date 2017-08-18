@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+}
+svg#treemap {
+    font: 8px sans-serif;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.region_EAS { fill: rgb(223, 127, 46); background-color: rgb(223, 127, 46);}
+.region_ECS { fill: rgb(206,18,73); background-color: rgb(206,18,73);}
+.region_LCN { fill: rgb(58,148,60); background-color: rgb(58,148,60);}
+.region_MEA { fill: rgb(127, 62, 131); background-color: rgb(127, 62, 131); }
+.region_NAC { fill: black; } /* TODO find out real color */
+.region_SAS { fill: rgb(32, 120, 182); background-color: rgb(32, 120, 182); }
+.region_SSF { fill: rgb(255, 203, 6); background-color: rgb(255, 203, 6); }
+
+.text { fill: white;}
+.text.region_SSF { fill: DarkSlateGray; }
+
+#legend {
+    font: 12px sans-serif;
+    vertical-align: middle;
+    border-spacing: 0px;
+}
+
+#legend.small {
+    font: 11px sans-serif;
+}
+
+
+.legendentry {
+    padding-right: 5px;
+    padding-left: 1px;
+}
+
+html.rtl .legendentry {
+    padding-right: 1px;
+    padding-left: 5px;
+}
+
+.legendkey { 
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 3px;
+}
+
+html.rtl .legendkey {
+    margin-right: inherit;
+    margin-left: 3px;
+}
+
+#legendsizekey { 
+    display: inline-block;
+    background-color: grey;
+    margin-left: 5px;
+}
+
+html.rtl #legendsizekey { 
+    margin-left: inherit;
+    margin-right: 5px;
+}
+
+#legendsizetext {
+    text-align: right;
+}
+
+html.rtl #legendsizetext {
+    text-align: left;
+}
+
+#slider label {
+    position: absolute;
+    width: 40px;
+    margin-top: 20px;
+    margin-left: -20px;
+    text-align: center;
+    font-size: 10px;
+}
+
+h2.caption {
+    font: 24px sans-serif;
+}
+
+#yearlabel {
+    -webkit-animation: fadein 0.5s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 0.5s; /* Firefox < 16 */
+        -ms-animation: fadein 0.5s; /* Internet Explorer */
+         -o-animation: fadein 0.5s; /* Opera < 12.1 */
+            animation: fadein 0.5s;
+}
+
+html.rtl td.figures {
+    text-align: right;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.tooltip {
+    position: absolute;
+    /* text-align: left; */
+    width: auto;
+    max-width: 250px;
+    height: auto;
+    padding: 8px;
+    /* margin-top: -20px; */
+    font: 12px sans-serif;
+    background: white;
+    border: 1px #ccc;
+    box-shadow: 2px 2px 4px #666;
+    pointer-events: none;
+}
+
+.tooltip table {
+    border-spacing: 10px 5px;
+}

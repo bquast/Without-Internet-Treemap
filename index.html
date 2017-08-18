@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+
+    <link rel="stylesheet" href="extreme_poverty_treemap.css">
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var lang = window.location.hash ? window.location.hash.substring(1) : 'en';
+            $('html').attr('lang', lang)
+              
+            $.getScript("i18n/"+lang+"/strings.js", function() {
+                // render the main strings in the body
+                var template = $('#template').html();
+                var rendered = Mustache.render(template, i18n_strings);
+                $('#target').html(rendered);
+
+                if (i18n_strings.rtl) {
+                    $('html').attr('dir', 'rtl');
+                    $('html').addClass('rtl');
+                }
+                
+                if (i18n_strings.small_legend_text) {
+                    $('#legend').addClass('small');
+                }
+            });
+            
+            // load the countries, ready for labelling
+            $.getJSON("i18n/"+lang+"/countries.json", function(countries) {
+                window.i18n_countries = countries;
+                console.log(countries);
+                $.getScript("extreme_poverty_treemap.js");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div style="width: 675px; margin: 0;">
+        <div id="target"></div>
+        <script id="template" type="x-tmpl-mustache">
+        <h2 class="caption">{{{title}}}</h2>
+        <table style="width: 100%" id="legend"><tr>
+            <td class="legendentry"><span class="legendkey region_EAS"></span>{{region.EAS}}</td>
+            <td class="legendentry"><span class="legendkey region_LCN"></span>{{region.LCN}}</td>
+            <td class="legendentry"><span class="legendkey region_SAS"></span>{{region.SAS}}</td>
+            <td id="legendsizetext" rowspan=2 valign="middle">{{size_legend.0}}<br>{{size_legend.1}}<br>{{size_legend.2}}</td>
+            <td rowspan=2 valign="middle"><span id="legendsizekey" style="font-size: 10px;width:41px; height:41px; text-align: center"></span></td>
+        </tr><tr>
+            <td class="legendentry"><span class="legendkey region_ECS"></span>{{region.ECS}}</td>
+            <td class="legendentry"><span class="legendkey region_MEA"></span>{{region.MEA}}</td>
+            <td class="legendentry"><span class="legendkey region_SSF"></span>{{region.SSF}}</td>
+        </tr></table>
+        </script>
+        <svg id="treemap" width="675" height="500"></svg>
+        <button id="play" class="ui-button ui-widget ui-corner-all" style="float: left; width: 50px; margin-top: -10px">&#9654;</button><div id="slider" style="margin-left: 70px; margin-right: 15px"></div>
+    </div>
+</body>
+<html>
+
