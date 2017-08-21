@@ -66,7 +66,7 @@ var regions = {
 var years = [];    // array of years in which we have observations
 var currentYear;   // current year being displayed
 
-d3.csv("extreme_poverty.csv", function(error, table) {
+d3.csv("https://docs.google.com/spreadsheets/d/1c6LicCSIAgKuBCO3UCVSNg5gTpsVYBk3ci_ekrjvdnM/pub?gid=1312456333&single=true&output=csv", function(error, table) {
 
     if (error) throw error;
 
