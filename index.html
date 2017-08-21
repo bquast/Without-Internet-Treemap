@@ -30,7 +30,7 @@
             });
             
             // load the countries, ready for labelling
-            $.getJSON("i18n/"+lang+"/countries.json", function(countries) {
+            $.getJSON("https://spreadsheets.google.com/feeds/list/1c6LicCSIAgKuBCO3UCVSNg5gTpsVYBk3ci_ekrjvdnM/default/public/basic?alt=json", function(countries) {
                 window.i18n_countries = countries;
                 console.log(countries);
                 $.getScript("extreme_poverty_treemap.js");
